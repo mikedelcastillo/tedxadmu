@@ -1,0 +1,127 @@
+extends _partials/layout
+
+prepend config
+  - title = "About | TEDxADMU"
+  - timeText = "TEDxADMU through the years"
+  - activeLinkId = "about"
+
+mixin speaker-item(name, talk=null, link="#")
+  a.speaker-item(href=link)
+    .speaker-name!= name
+    if talk
+      .talk-title!= doubleQuote(singleQuote(talk)) + " &gt"
+
+block content
+  .section.abejasa.right#section-about-ted
+    .center-wrapper
+      .text-wrapper
+        .big-text What is TED?
+        .paragraphs-wrapper
+          .paragraph TED is a nonpartisan, nonprofit organization dedicated to a single mission: spreading ideas. Initially beginning as a conference revolving around Technology, Entertainment, and Design (TED), it has since branched out into a wider range of disciplines and topics. 
+          .paragraph Today, TED continues to organize conferences that share Ideas Worth Spreading in over a hundred languages around the world.
+        a.btn-more(href="https://www.ted.com") Visit the TED Website &gt;
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+  .section.abejasa.left#section-about-tedx
+    .center-wrapper
+      .text-wrapper
+        .big-text What is TEDx?
+        .paragraphs-wrapper
+          .paragraph In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TEDTalks video and live speakers combine to spark deep discussion and connection in a small group. 
+          .paragraph These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized (subject to certain rules and regulations).
+        a.btn-more(href="index") Learn more about#[br]TEDxADMU Re:Vision &gt;
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+  .section.abejasa.right.half#section-time-2013
+    .center-wrapper
+      .text-wrapper
+        .pre-heading-text= timeText
+        .big-text TEDxADMU 2013: IgNation
+        .paragraphs-wrapper
+          .paragraph!= singleQuote("The key point is Nation-building&mdash;ideas from different schools of thought that seek to develop the Philippines as a nation, tapping into potential that can take the world by surprise. Look into the lives and experiences of some of the country's " + doubleQuote("nation-builders") + "&mdash;people who have been able to capitalize on opportunities to create innovative notions and inspiring deeds for the Philippines as a nation.")
+        .big-but-not-as-big-text Speakers
+        .speakers-wrapper
+          +speaker-item('Eddie Calasanz', 'The Most Important Thing that Cannot Be Said', "https://www.youtube.com/watch?v=FgOi4ZR57fA")
+          +speaker-item('Sabrina Ongkiko', 'Our Return on Investment', "https://www.youtube.com/watch?v=vvsziU1cVHw")
+          +speaker-item('Pepe Diokno', 'Who Killed Philippine Cinema?', "https://www.youtube.com/watch?v=plNNkf90jUU&t=625s")
+          +speaker-item('Chris Lao', 'A Tale of Defeat, Resolve, and an All-Out War Against Bullying', "https://www.youtube.com/watch?v=ZldjQUmWU9Y")
+          +speaker-item('Alex Hornstein', 'Some Big Thoughts About Small Solar', "https://www.youtube.com/watch?v=ZxiSmaUYV84")
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+  .section.abejasa.left.half#section-time-2014
+    .center-wrapper
+      .text-wrapper
+        .pre-heading-text= timeText
+        .big-text TEDxADMU 2014: Project i
+        .paragraphs-wrapper
+          .paragraph!= singleQuote("A movement initiated by the youth geared towards mobilizing their own generation-- that of the change-makers and the future. Are we simply the so-called " + doubleQuote("selfie") + " generation, or is there more to us than that? The self, even as a work in progress, has the power to engage minds and create meaningful change in the community. The " + doubleQuote("I") + " will be revealed as both a projection of the self to the world, and as a project that is challenged to take a journey of self-introspection in order to grow.")
+        .big-but-not-as-big-text Speakers
+        .speakers-wrapper
+          +speaker-item("Reese Fernandez", "Finding Your Space in the Greater Scheme of Things", "https://www.youtube.com/watch?v=zvNuwmmRSrw")
+          +speaker-item("Czarina Medina-Guce", "Our Proof of Concept", "https://www.youtube.com/watch?v=knQ4a3RmKao")
+          +speaker-item("Rajo Laurel", "A Designer's Journey", "https://www.youtube.com/watch?v=kWiUN5pFamw")
+          +speaker-item("Jetro Rafael ", "My Quest for I", "https://www.youtube.com/watch?v=UgQko2-nlwk")
+          +speaker-item("Fr. Rene Javellana", "Is the Selfie Generation Selfish?", "https://www.youtube.com/watch?v=hA3JH3ybkq0")
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+  .section.abejasa.right.half#section-time-2015
+    .center-wrapper
+      .text-wrapper
+        .pre-heading-text= timeText
+        .big-text TEDxADMU 2015: Why Coordinate
+        .paragraphs-wrapper
+          .paragraph!= singleQuote("Despite societies that are ever-changing and ideas that are constantly evolving, there always remains an underlying interconnectedness that requires one to see the world in a similar way. While each independent individual, represented by an X, has his own passions and principles, it is essential that we also understand the WHY behind every belief and action. In the third annual TEDxADMU, as speakers present concepts from different fields, we hope that you are able to find a connection between these ideas and discover the importance of coordination.")
+        .big-but-not-as-big-text Speakers
+        .speakers-wrapper
+          +speaker-item("Rico La Vina", "I am because we are: walking with the people of Casiguran", "https://www.youtube.com/watch?v=wKTdtRMYTIE")
+          +speaker-item("Paul Rivera", "Going Where You’re Not Supposed to Be", "https://www.youtube.com/watch?v=N3PNElMiVWA")
+          +speaker-item("Dr. Queena Lee-Chua", "Game Theory and People Power", "https://www.youtube.com/watch?v=5ddKNhlDXks")
+          +speaker-item("Jim Paredes", "Come As You Are", "https://www.youtube.com/watch?v=paDQHYAOUzk")
+          +speaker-item("Julian Tanaka", "Why transgenders stop dreaming", "https://www.youtube.com/watch?v=tTISpe2Rq-s")
+          //- +speaker-item("Dr. Roberto Guevara")
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+  .section.abejasa.left.half#section-time-2016
+    .center-wrapper
+      .text-wrapper
+        .pre-heading-text= timeText
+        .big-text TEDxADMU 2016: Unspoken
+        .paragraphs-wrapper
+          .paragraph!= singleQuote("For as long as we can remember, we have been a part of society: a society we interact with and traverse each and every day. A society that is deviant and diverse from the next, a society where certain issues are left unexamined and unquestioned. The time has come for humanity’s existence, beliefs and norms -- amidst the issues in society -- to be challenged. In the fourth annual TEDxADMU, we invite everyone to delve into a deeper sense of humanity and challenge the stigmas associated with it through our discussions about The Questions We Have to Ask.")
+        .big-but-not-as-big-text Speakers
+        .speakers-wrapper
+          +speaker-item("Nanette Medved-Po", "Is it enough just to be profitable?", "https://www.youtube.com/watch?v=4BrdcDcMIrE")
+          +speaker-item("John Nery", "How to train your outrage", "https://www.youtube.com/watch?v=v_Zw74iRUdI")
+          +speaker-item("Justin Decastro", "How can books save the Filipino?", "https://www.youtube.com/watch?v=wxvNaxMvvIw")
+          +speaker-item("Kat Alano", "Is rape culture the new social cancer?", "https://www.youtube.com/watch?v=CDCPJwwAYRE&t=19s")
+          +speaker-item("Boy Abunda", "Why can't we have a gay president?", "https://www.youtube.com/watch?v=bhRooc33szU")
+          +speaker-item("Joseph " + doubleQuote("Mandrake") + " Ferrer", "Got Wonder?", "https://www.youtube.com/watch?v=ve06Szjb2-Q")
+          +speaker-item("Maria Ozawa", "Breaking Preconceived Notions With the AV Industry", "https://www.youtube.com/watch?v=LkJotoAwR5A")
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+  .section.abejasa.right.half#section-time-2017
+    .center-wrapper
+      .text-wrapper
+        .pre-heading-text= timeText
+        .big-text TEDxADMU 2017: Viewpoints
+        .paragraphs-wrapper
+          .paragraph!= singleQuote("Individuals inherently create interpretations, and from interpretations stem unique perspectives. In a world filled with individuals of vastly different cultures and beliefs, contrasting views on certain things are inevitable. Individuals see things from where they stand, but this perspective then limits one’s field of vision — blurring the lines between what we see and what is. To this, a solution lies: to broaden one’s horizons and see things through different Viewpoints.")
+        .big-but-not-as-big-text Speakers
+        .speakers-wrapper
+          +speaker-item("Thomas Graham", "The Genius of the Filipino Poor", "https://www.youtube.com/watch?v=v-JxeTd8kAw")
+          +speaker-item("Manolo Gonzales", "The Lazy Songwriting Generation", "https://www.youtube.com/watch?v=t0J_IYsVTpc")
+          +speaker-item("Jeoffrey Estaris", "The New Form of Marketing", "https://www.youtube.com/watch?v=dcgBvWYn1Uc")
+          +speaker-item("Mylene Abiva", "The Truth Behind Robots", "https://www.youtube.com/watch?v=2mUc0nrBTUo")
+          +speaker-item("Paolo Espiritu", "Education With Virtual Reality", "https://www.youtube.com/watch?v=RrCt_vIvYSc")
+          +speaker-item("Angelo Mañosa ", "The Architecture of the Bahay Kubo")
+          +speaker-item("Cathleen Caga-Anan", "Why We Need Human Rights", "https://www.youtube.com/watch?v=2XLedtIU8TE")
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+            

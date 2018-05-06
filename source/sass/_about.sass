@@ -1,0 +1,140 @@
+@import defaults
+
+#section-about-ted .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-about-1-fg.png)
+  .background
+    background-image: url(../img/collage-about-1-bg.jpg)
+#section-about-tedx .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-about-2-fg.png)
+  .background
+    background-image: url(../img/collage-about-2-bg.jpg)
+#section-time-2013 .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-time-1-fg.png)
+  .background
+    background-image: url(../img/collage-time-1-bg.jpg)
+#section-time-2014 .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-time-2-fg.png)
+  .background
+    background-image: url(../img/collage-time-2-bg.jpg)
+#section-time-2015 .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-time-3-fg.png)
+  .background
+    background-image: url(../img/collage-time-3-bg.jpg)
+#section-time-2016 .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-time-4-fg.png)
+  .background
+    background-image: url(../img/collage-time-4-bg.jpg)
+#section-time-2017 .collage-wrapper
+  .foreground
+    background-image: url(../img/collage-time-5-fg.png)
+  .background
+    background-image: url(../img/collage-time-5-bg.jpg)
+
+.abejasa
+  .center-wrapper
+    .text-wrapper
+      .pre-heading-text
+        font-family: $font-monospace
+        text-transform: lowercase
+        font-size: 0.9em
+        color: rgb(110, 110, 110)
+        text-decoration: underline
+        margin-bottom: 2em
+      .big-but-not-as-big-text
+        font-size: 1.3em
+        font-weight: 700
+        margin-top: 1.1em
+      .speakers-wrapper
+        padding: 2em
+        .speaker-item
+          display: block
+          text-decoration: none
+          color: black
+          margin-bottom: 1.5em
+          .speaker-name
+            font-size: 1.1em
+          .talk-title
+            font-size: 0.9em
+            color: rgb(156, 156, 156)
+      .big-text
+        font-size: 1.7em
+        font-weight: 700
+      .paragraphs-wrapper
+        .paragraph
+          margin-top: 1em
+          line-height: 1.5em
+      .btn-more
+        display: block
+        margin-top: 1.5em
+    .collage-wrapper
+      .frame
+        background-repeat: no-repeat
+        background-size: 100%
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        &.foreground
+          z-index: 1
+          transform: translateZ(50px) translateY(20px) scale(1, 1)
+        &.background
+          z-index: 0
+          transform: $background
+  +range(0, $break-3 - 1)
+    margin-bottom: 2em
+    .center-wrapper
+      .text-wrapper
+        padding: 2em $paragraph-padding
+        .speakers-wrapper
+          padding-left: 0
+          padding-right: 0
+      .collage-wrapper
+        width: 100%
+        padding-bottom: 80%
+        .frame
+          background-position: top center
+  +range($break-3)
+    padding-top: 2em
+    padding-bottom: 5em
+    $ratio: 40%
+    $text-padding: 5em
+    .center-wrapper
+      display: flex
+      justify-content: space-between
+      align-items: flex-start
+      .text-wrapper
+        width: $ratio
+      .collage-wrapper
+        width: 100% - $ratio
+        flex-grow: 1
+        //stupid firefox
+        height: 40vw
+        .frame
+          background-position: bottom center
+    &.left
+      .center-wrapper
+        flex-direction: row
+        .text-wrapper
+          padding-right: $text-padding
+    &.right
+      .center-wrapper
+        flex-direction: row-reverse
+        .text-wrapper
+          padding-left: $text-padding
+    &.half
+      padding-top: 1em
+      padding-bottom: 2em
+      .center-wrapper
+        .text-wrapper, .collage-wrapper
+          width: 50%
+        .collage-wrapper
+          padding-bottom: 60%
+          .frame
+            background-position: top center

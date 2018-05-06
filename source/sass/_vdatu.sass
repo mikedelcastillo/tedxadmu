@@ -1,0 +1,120 @@
+#section-speakers
+  .collage-wrapper
+    .foreground
+      background-image: url(../img/collage-speakers-fg.png)
+    .background
+      background-image: url(../img/collage-speakers-bg.jpg)
+  .big-text
+    max-width: 16em
+
+#section-partners
+  .collage-wrapper
+    .foreground
+      background-image: url(../img/collage-partners-fg.png)
+    .background
+      background-image: url(../img/collage-partners-bg.jpg)
+  .sub-text-wrapper
+    margin-top: 0
+    max-width: 30em
+  +range($break-3)
+    .center-wrapper
+      margin-top: 1em
+      align-items: center
+      .text-wrapper
+        align-items: center
+        &, & *
+          text-align: center
+        .big-text
+        .button
+        .sub-text-wrapper
+          max-width: 45em
+        .email-link
+          font-family: $font-monospace
+          text-decoration: underline
+      .collage-wrapper
+        margin-top: 1em
+        align-self: center
+
+#section-apply
+  .sub-text-wrapper
+    margin-top: 0
+  .big-text
+    max-width: 16em
+  .collage-wrapper
+    .foreground
+      background-image: url(../img/collage-apply-fg.png)
+    .background
+      background-image: url(../img/collage-apply-bg.jpg)
+    .midground
+      background-image: url(../img/collage-apply-mid.png)
+
+.vdatu
+  .center-wrapper
+    display: flex
+    flex-direction: column
+    .text-wrapper
+      display: flex
+      flex-direction: column
+      .big-text
+        font-family: $font-sans-serif
+        font-weight: 700
+        font-size: 2em
+        margin-bottom: 0.5em
+      .button
+      .sub-text
+        margin-bottom: 1em
+      .sub-text-wrapper
+        margin-top: 1em
+        line-height: 1.5em
+    .collage-wrapper
+      width: 100%
+      height: 60vw
+      .frame
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-position: top center
+        background-size: 100% auto
+        &.foreground
+          transform: translateZ(50px) translateY(0)
+        &.background
+          transform: translateZ(-100px) translateY(0)
+        &.midground
+          transform: translateZ(-50px) translateY(0)
+  +range(0, $break-3 - 1)
+    .center-wrapper
+      margin-top: 2em
+      &, & *
+        text-align: center
+      .text-wrapper
+        align-items: center
+        .big-text
+          font-size: 1.5em
+        .button
+        .sub-text
+      .collage-wrapper
+        margin-top: 2em
+        .frame
+          &.foreground
+          &.background
+  +range($break-3)
+    .center-wrapper
+      margin-top: 1em
+      align-items: flex-end
+      .text-wrapper
+        align-items: flex-end
+        &, & *
+          text-align: right
+        .big-text
+          font-size: 2.3em
+        .button
+        .sub-text-wrapper
+          max-width: 60%
+      .collage-wrapper
+        margin-top: -3em
+        width: 80%
+        height: 48vw
+        align-self: flex-start

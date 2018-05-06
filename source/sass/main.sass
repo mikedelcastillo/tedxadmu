@@ -1,0 +1,263 @@
+@import defaults
+
+@import fonts
+
+body, html
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  font-family: $font-sans-serif
+  overflow-x: hidden
+  overflow-y: auto
+  font-size: 16px
+
+*
+  text-decoration: none
+  box-sizing: border-box
+  position: relative
+  -webkit-overflow-scrolling: touch
+  outline: 0
+  -webkit-tap-highlight-color: transparent
+  -webkit-touch-callout: none
+  -moz-touch-callout: none
+  touch-callout: none
+  backface-visibility: hidden
+  user-select: none
+
+#sidebar-wrapper, #content-wrapper, #header-wrapper
+  transform: translateZ(0.0)
+
+#sidebar-wrapper
+  transition: $sidebar-transition
+  background-color: black
+  position: fixed
+  height: 100%
+  width: $sidebar-width
+  align-items: center
+  padding: ($header-mobile-height/2 - $logo-mobile-height/2) 2.5em
+  overflow-x: hidden
+  overflow-y: auto
+  top: 0
+  left: 0
+
+  .logo-wrapper
+    margin: auto
+    margin-bottom: 4em
+
+  .navigation-wrapper
+    .navigation-link
+      display: block
+      color: white
+      font-size: 1.7em
+      text-decoration: none
+      margin-bottom: 1.2em
+      font-weight: 300
+      position: relative
+
+      &.active::after
+        content: ' '
+        $size: 0.3em
+        width: $size
+        height: $size
+        display: inline-block
+        border-radius: 50%
+        background-color: $color-red
+        vertical-align: middle
+        margin-left: 0.5em
+
+
+.logo-wrapper
+  height: $logo-mobile-height
+  min-width: 2.5em * 4
+  display: block
+  background-position: center
+  background-size: contain
+  background-repeat: no-repeat
+
+  &.white
+    background-image: url(../img/tedxadmu-logo-white.jpg)
+
+  &.black
+    background-image: url(../img/tedxadmu-logo-black.jpg)
+
+body
+  #header-wrapper, #content-wrapper
+    left: 0
+
+  #sidebar-wrapper
+    left: -$sidebar-width
+
+.sidebar-open
+  overflow: hidden
+
+  #header-wrapper, #content-wrapper
+    left: $sidebar-width
+
+  #sidebar-wrapper
+    left: 0
+
++range($break-3)
+  body, .sidebar-open
+    #header-wrapper, #content-wrapper
+      left: 0
+
+    #sidebar-wrapper
+      left: -$sidebar-width
+
+.three-d, .collage-wrapper
+  pointer-events: none
+
+#content-wrapper
+  perspective: 900px
+  +range(0, $break-3 - 1)
+    perspective: 1200px
+  position: relative
+  transition: $sidebar-transition, perspective 3s ease-out
+  z-index: 0
+  width: 100%
+  .three-d
+    transition: all 2s
+    opacity: 1
+  &.no-perspective
+    perspective: 1px
+    .three-d
+      opacity: 0
+  &, & *
+    transform-style: preserve-3d
+
+#header-spacer
+  height: $header-mobile-height
+
+  +range($break-3)
+    height: $header-desktop-height
+
+#header-wrapper, #sidebar-wrapper
+  +always-on-top
+
+#header-wrapper
+  border-bottom: 1px solid $color-light-gray
+  height: $header-mobile-height
+  position: fixed
+  width: 100%
+  left: 0
+  top: 0
+  transition: $sidebar-transition, height 0.2s
+  background-color: white
+
+  .center-wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100%
+
+  *
+    flex-grow: 0
+    flex-shrink: 0
+
+  .navigation-wrapper
+    display: none
+
+  .btn-hamburger
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    width: $header-mobile-height
+    height: $header-mobile-height
+    position: absolute
+    top: 0
+    left: 0
+
+    &, & *
+      cursor: pointer
+
+    .line
+      background-color: black
+      width: $header-mobile-height/3
+      height: 1px
+
+      &.second
+        margin: $header-mobile-height/9 0
+
+  +range($break-3)
+    border-bottom: 0
+    height: 7.5em
+
+    &.compact
+      height: $header-desktop-compact-height
+      border-bottom: 1px solid $color-light-gray
+
+    .center-wrapper
+      justify-content: space-between
+
+    .btn-hamburger
+      display: none
+
+    .navigation-wrapper
+      display: flex
+      width: 40%
+      justify-content: space-between
+
+      .navigation-link
+        color: black
+        position: relative
+
+        &.active::after
+          content: ' '
+          position: absolute
+          left: 10%
+          bottom: -0.4em
+          width: 80%
+          border-bottom: 4px solid
+          border-color: #ececec
+
+        &.apply
+          color: $color-red
+
+.section
+  width: 100%
+
+  .center-wrapper
+    width: 90%
+    max-width: $max-width
+    margin: auto
+
+    +range($break-3)
+      width: 80%
+
+.button
+  &, &:visited
+    display: inline-block
+    background-color: $color-red
+    color: white
+    text-transform: uppercase
+    padding: 0.5em 2em
+
+  &:active
+    background-color: white
+    color: $color-red
+
+.btn-more
+  font-family: $font-monospace
+  text-decoration: underline
+  color: black
+  cursor: pointer
+  display: block
+
+a, a:active, a:visited
+  color: black
+
+@import vdatu
+
+@import loading
+@import landing
+@import about
+@import speakers
+@import footer
+@import frame
+
+
+#section-partners .email-link
+  font-family: $font-monospace
+  text-decoration: underline

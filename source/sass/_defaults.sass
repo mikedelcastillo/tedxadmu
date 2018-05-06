@@ -1,0 +1,103 @@
+$spinner-size: 3em
+
+$max-width: 1400px
+
+$sidebar-width: 300px
+
+$color-red: #ff2b06
+$color-light-gray: #F6F6F6
+
+$paragraph-padding: 10%
+
+$font-sans-serif-base: 'HN'
+$font-sans-serif: $font-sans-serif-base, 'Helvetica Neue', Helvetica, sans-serif
+$font-monospace: 'Cutive Mono', monospace
+
+$sidebar-transition: left 0.2s
+
+$header-mobile-height: 3.75em
+$header-desktop-height: 7.5em
+$header-desktop-compact-height: 5.5em
+$min-desktop-height: 37.5em
+
+$logo-mobile-height: 2em
+
+$break-1: 370px
+$break-2: 500px
+$break-3: 900px
+$break-4: 1200px
+
+$foreground: translateZ(100px)
+$background: translateZ(-100px)
+
+@mixin always-on-top($top: 5000)
+  &, & *
+    transform-style: flat
+    transform: translateZ($top * 1px)
+    z-index: $top
+
+@mixin full-view-height($pre: "")
+  +range(0, $break-3 - 1)
+    #{$pre}height: calc(100vh - #{$header-mobile-height})
+
+  +range($break-3)
+    #{$pre}height: calc(100vh - #{$header-desktop-height})
+
+    +rangeh(0, $min-desktop-height + $header-desktop-height)
+      #{$pre}height: $min-desktop-height
+
+@mixin range($from, $to: -1)
+  @if ($to == -1)
+    @media screen and (min-width: #{$from})
+      @content
+  @else
+    @media screen and (min-width: #{$from}) and (max-width: #{$to})
+      @content
+
+@mixin rangeh($from, $to: -1)
+  @if ($to == -1)
+    @media screen and (min-height: #{$from})
+      @content
+  @else
+    @media screen and (min-height: #{$from}) and (max-height: #{$to})
+      @content
+
+@mixin break-grid($prop, $pb, $pm, $bb, $bm, $n)
+  @for $i from 1 through $n
+    $lb: $bb + $bm * ($i - 2) + 1
+    $ub: $bb + $bm * ($i - 1)
+    @if $i == 1
+      $lb: 0
+    @if $i == $n
+      $ub: -1
+    +range($lb, $ub)
+      #{$prop}: ($i - 1) * $pm + $pb
+
+@mixin break-grid-inv-perc($prop, $pb, $pm, $bb, $bm, $n)
+  @for $i from 1 through $n
+    $lb: $bb + $bm * ($i - 2) + 1
+    $ub: $bb + $bm * ($i - 1)
+    @if $i == 1
+      $lb: 0
+    @if $i == $n
+      $ub: -1
+    +range($lb, $ub)
+      #{$prop}: 1/($i) * $pm + $pb
+
+@mixin break-grid-inv-perc-calc($prop, $pb, $pm, $bb, $bm, $n, $c)
+  @for $i from 1 through $n
+    $lb: $bb + $bm * ($i - 2) + 1
+    $ub: $bb + $bm * ($i - 1)
+    @if $i == 1
+      $lb: 0
+    @if $i == $n
+      $ub: -1
+    +range($lb, $ub)
+      #{$prop}: calc(#{1/($i) * $pm + $pb} + #{$c})
+
+@mixin gradient($x1, $x2)
+  background: $x1
+  background: -moz-linear-gradient(top, #{$x1} 0%, #{$x2} 100%)
+  background: -webkit-linear-gradient(top, #{$x1} 0%,#{$x2} 100%)
+  background: linear-gradient(to bottom, #{$x1} 0%,#{$x2} 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$x1}', endColorstr='#{$x2}',GradientType=0 )

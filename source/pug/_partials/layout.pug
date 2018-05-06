@@ -1,0 +1,157 @@
+block config
+  - 
+    if(!title) title = "Title";
+    var js = [
+      "js/jquery.js",
+      "js/main.js",
+      "https://www.googletagmanager.com/gtag/js?id=UA-113151654-2"
+    ];
+    var css = [
+      "css/main.css"
+    ];
+    
+    js = js.map(file => file + "?ver=" + new Date().getTime());
+    css = css.map(file => file + "?ver=" + new Date().getTime());
+    
+    var navLinks = [
+      {
+        id: "about",
+        url: link("about"),
+        text: "About"
+      },{
+        id: "speakers",
+        url: link("speakers"),
+        text: "Speakers"
+      },{
+        id: "partners",
+        url: link("partners"),
+        text: "Partners"
+      },{
+        id: "apply",
+        url: link("apply"),
+        text: "Apply"
+      }
+    ];
+    
+    var socialLinks = [
+      {
+        id: "facebook",
+        url: "http://facebook.com/TEDxADMU/"
+      },
+      {
+        id: "twitter",
+        url: "https://twitter.com/TEDxADMU"
+      }
+    ];
+    
+    themeColor = "#ff2b06";
+    iconLink, faviconLink;
+    siteName = "TEDxADMU 2018 Re:Vision";
+    siteDescription = "TEDxADMU is an annual event that gathers various thinkers, doers and society-movers to share ideas and to discuss pressing issues that are relevant in today’s society.";
+    siteImage = "http://tedxadmu.ph/img/preview.jpg";
+    twitterHandle = "@TEDxADMU";
+    siteUrl = "http://tedxadmu.com"
+    
+    function link(url = ""){
+      if(!url) return "index";
+      return url;
+    }
+    
+    function doubleQuote(text){
+      return `&ldquo;${text}&rdquo;`;
+    }
+    
+    function singleQuote(text){
+      return text.replace(/\'/gmi, "&rsquo;");
+    }
+
+mixin applyButton(c)
+  a.button.btn-apply(href="apply" class=c) Apply Now
+  
+mixin spinner
+  .spinner-wrapper
+    .mask
+      .circle
+doctype html
+html(lang="en")
+  head
+    title #{title}
+    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(charset="utf-8")
+      
+    meta(developer="Mike del Castillo" site="http://mikedc.io")
+      
+    meta(name="msapplication-tap-highlight" content="no")
+      
+    meta(name="theme-color" content=themeColor)
+    meta(name="apple-mobile-web-app-status-bar-style" content=themeColor)
+    meta(name="mobile-web-app-status-bar-style" content=themeColor)
+      
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="mobile-web-app-capable" content="yes")
+    
+    link(rel="apple-touch-icon" sizes="192x192" href=iconLink)
+    link(rel="shortcut icon" href=faviconLink type="image/x-icon")
+    link(rel="icon" href=faviconLink type="image/x-icon")
+      
+    meta(name="og:title" content=title)
+    meta(name="og:type" content="website")
+    meta(name="og:url" content=siteUrl)
+    meta(name="og:image" content=siteImage)
+    meta(name="og:site_name" content=siteName)
+    meta(name="og:description" content=siteDescription)
+
+    meta(name="fb:page_id" content="457973194254622")
+    
+    meta(name="google-analytics" content="")
+      
+    meta(name="format-detection" content="telephone=no")
+    
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:site" content=twitterHandle)
+    meta(name="twitter:title" content=title)
+    meta(name="twitter:description" content=siteDescription)
+    meta(name="twitter:creator" content=twitterHandle)
+
+    meta(name="twitter:image:src" content=siteImage)
+  
+    each file in js
+      script(src=file)
+    each file in css
+      link(href=file rel="stylesheet" type="text/css")
+  body.loading
+    #loading-wrapper
+      +spinner
+    #sidebar-wrapper
+      a(href=link()).logo-wrapper.black
+      .navigation-wrapper
+        each link in navLinks
+          a.navigation-link(href=link.url class=link.id class={active: link.id == activeLinkId})= link.text
+    .section#header-wrapper
+      .center-wrapper
+        #btn-hamburger.btn-hamburger
+          .line.first
+          .line.second
+          .line.third
+        a(href=link()).logo-wrapper.white
+        .navigation-wrapper
+          each link in navLinks
+            a.navigation-link(href=link.url class=link.id class={active: link.id == activeLinkId})= link.text
+    #content-wrapper.no-perspective
+      #header-spacer
+      block content
+      #footer-wrapper
+        .social-wrapper
+          each link in socialLinks
+            a.social-link(class=link.id href=link.url)
+        .spacer
+        .copy-text 
+          .line.line-1 Email us at #[a(href="mailto:organizers@tedxadmu.ph") organizers], #[a(href="mailto:partnerships@tedxadmu.ph") partnerships] and #[a(href="mailto:support@tedxadmu.ph") support@tedxadmu.ph]
+          .line.line-2 &copy; TEDxADMU 2018 Re:Vision. All rights reserved.
+    #frame-wrapper
+      #frame-close
+        .line.line-1
+        .line.line-2
+      iframe#frame
+      +spinner

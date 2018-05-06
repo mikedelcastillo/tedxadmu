@@ -1,0 +1,39 @@
+extends _partials/layout
+
+prepend config
+  - title = "TEDxADMU 2018 Re:Vision"
+
+block content  
+  .section#section-home-1
+    .center-wrapper
+      .text-wrapper
+        .text-center-wrapper
+          .big-text
+            span.line-1 Rethink. 
+            span.line-2 Revise.
+          .sub-text
+            .line-1 Be a part of TEDxADMU 2018 Re:Vision
+            .line-2 Explore possibilities on April 15, 2018
+          +applyButton
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background-1.three-d
+        .frame.background-2.three-d
+        .frame.background-3.three-d
+  .section#section-home-2
+    .banner-wrapper
+      .collage-wrapper
+        .frame.foreground.three-d
+        .frame.background.three-d
+      .center-wrapper
+        .text-wrapper
+          .big-text Into the vast What if
+          .paragraph!= doubleQuote("What if?") + singleQuote(" It's a simple question, but it's one that challenges everything we know, opening up a realm of possibilities.")
+          #btn-more-text.btn-more(href="#more") Learn more
+    .collage-wrapper
+      .frame.foreground.three-d
+      .frame.background.three-d
+    .center-wrapper.paragraphs-wrapper#more-text
+      .paragraph What if humans did not need to sleep? What if we could travel through time and space? What if alternate dimensions existed? What if Adolf Hitler or Mother Teresa were never born? What if the world had no poverty and suffering? What if things just happened differently?
+      .paragraph It is a lingering enigma that challenges our deepest thoughts, our personal realities, and the core of our very existence. It is a concept that pushes the boundaries of our personhood, our relationships, and our society into innovation, marvel, and change. The vastness of the potentiality of this world&mdash;its pertinent possibilities&mdash;is the ignition that allows us to become who we can be, as individuals and as a people.
+      +applyButton

@@ -1,0 +1,45 @@
+@import defaults
+#footer-wrapper
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 2em 5%
+  flex-direction: row
+  font-size: 0.85em
+  *
+    align-self: center
+  .social-wrapper
+    .social-link
+      opacity: 0.6
+      display: inline-block
+      $size: 2em
+      width: $size
+      height: $size
+      background-repeat: no-repeat
+      background-position: center
+      background-size: contain
+      &.facebook
+        background-image: url(../img/facebook.png)
+      &.twitter
+        margin-left: 1em
+        background-image: url(../img/twitter.png)
+  .copy-text
+    font-size: 0.9em
+    color: rgb(193, 193, 193)
+    line-height: 1.5em
+    a
+      text-decoration: underline
+      color: inherit
+  .spacer
+    width: 5px
+    background-color: rgb(235, 235, 235)
+    margin: 1em
+    height: 2.5em
+  +range(0, 550px)
+    flex-direction: column
+    padding-bottom: 5em
+    text-align: center
+    .spacer
+      display: none
+    .social-wrapper
+      margin-bottom: 1em

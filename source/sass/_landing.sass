@@ -1,0 +1,227 @@
+@import defaults
+
+#section-home-1
+  margin-bottom: 4em
+  .center-wrapper
+    +range(0, $break-1 - 1)
+      max-height: 600px
+    +range($break-1, $break-2 - 1)
+      max-height: 800px
+    .text-wrapper
+      flex-grow: 1
+      flex-shrink: 0
+      z-index: 1
+      .big-text
+        font-weight: 700
+    .collage-wrapper
+      position: relative
+      .frame
+        background-repeat: no-repeat
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        &.foreground
+          transform: translateZ(200px) translateY(0px) scale(0.8)
+          z-index: 3
+          background-image: url(../img/collage-home-1-fg.png)
+        &.background-1
+          transform: translateZ(100px) translateY(0px)
+          z-index: 2
+          background-image: url(../img/collage-home-1-bg-1.png)
+        &.background-2
+          transform: translateZ(-100px) translateY(-40px)
+          z-index: 1
+          background-image: url(../img/collage-home-1-bg-2.png)
+        &.background-3
+          transform: translateZ(-300px) translateY(40px)
+          z-index: 0
+          background-image: url(../img/collage-home-1-bg-3.jpg)
+      z-index: 0
+  +range(0, $break-3 - 1)
+    .center-wrapper
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      +full-view-height("min-")
+      .text-wrapper
+        text-align: center
+        display: flex
+        justify-content: center
+        align-items: center
+        padding-bottom: 1em
+        padding-top: 1em
+        .big-text
+          font-size: 2.5em
+          .line-1, .line-2
+            display: inline
+        .sub-text
+          .line-1
+            font-size: 1.1em
+            margin-top: 0.5em
+            margin-bottom: 0.3em
+          .line-2
+            font-size: 0.9em
+        .btn-apply
+          margin-top: 1.2em
+        +range(0, $break-1)
+          .big-text
+            font-size: 2em
+          .sub-text
+            font-size: 0.9em
+        +range($break-2, $break-3 - 1)
+          padding-top: 2.5em
+          padding-bottom: 2.5em
+          .big-text
+            font-size: 3.5em
+          .sub-text
+            font-size: 1.2em
+      .collage-wrapper
+        width: 100%
+        padding-bottom: 90%
+        //firefox fix
+        height: 80vw
+        .frame
+          background-position: bottom center
+          background-size: contain
+  +range($break-3)
+    .center-wrapper
+      .text-wrapper
+        text-align: right
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        padding-left: 0
+        position: absolute
+        right: 0
+        height: 100%
+        min-width: 40%
+        .big-text
+          font-size: 6em
+          .line-1, .line-2
+            display: block
+        .sub-text
+          font-size: 1em
+          margin-top: 0.8em
+          margin-bottom: 1.5em
+          .line-2
+            margin-top: 0.5em
+        +range($break-4)
+          .big-text
+            font-size: 7.3em
+          .sub-text
+            font-size: 1.2em
+    .collage-wrapper
+      margin-top: 0
+      padding-bottom: 0
+      width: 100%
+      padding-bottom: 60%
+      height: 100%
+      z-index: 0
+      .frame
+        background-size: contain
+        background-position: center left
+
+#section-home-2
+  a#more
+    margin-top: 0
+  .collage-wrapper
+    .frame
+      background-repeat: no-repeat
+      background-size: 100%
+      background-position: bottom center
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+  .paragraphs-wrapper
+    .paragraph
+      margin: 1em 0
+      line-height: 1.5em
+  .banner-wrapper
+    .text-wrapper
+      margin: auto
+      width: 19em
+      .big-text
+        font-size: 1.8em
+        font-weight: 700
+        margin-bottom: 0.35em
+        margin-top: 1.1em
+      .paragraph
+        font-size: 1em
+        line-height: 1.4em
+      .btn-more
+        padding: 1em 0
+      +range(0, $break-2 - 1)
+        width: 17em
+        .big-text
+          font-size: 1.7em
+        .paragraph
+          font-size: 1em
+      +range($break-2, $break-3 - 1)
+        width: 25em
+        .big-text
+          font-size: 2.5em
+        .paragraph
+          font-size: 1.2em
+      +range($break-3)
+        width: 30em
+        .big-text
+          font-size: 3em
+        .paragraph
+          font-size: 1.3em
+          font-weight: 400
+  +range(0, $break-3 - 1)
+    .banner-wrapper .collage-wrapper
+      display: none
+    .collage-wrapper
+      width: 100%
+      padding-bottom: 60%
+      margin: 1em 0
+      .frame
+        &.foreground
+          transform: translateZ(50px) translateY(-10px) scale(0.9)
+          z-index: 3
+          background-image: url(../img/collage-home-2-2-fg.png)
+        &.background
+          transform: translateZ(-50px) translateY(-10px) scale(1.1)
+          z-index: 2
+          background-image: url(../img/collage-home-2-2-bg.jpg)
+    .paragraphs-wrapper
+      padding: 0 10%
+      margin: 2em auto
+      margin-top: 3em
+  +range($break-3)
+    margin-top: 7em
+    .collage-wrapper
+      display: none
+    .banner-wrapper
+      display: flex
+      margin-bottom: 2em
+      margin-top: 4em
+      .collage-wrapper
+        display: block
+        width: 100%
+        height: 100%
+        position: absolute
+        .frame
+          &.foreground
+            transform: translateZ(-50px) translateY(0px) scale(1.2)
+            z-index: 3
+            background-image: url(../img/collage-home-2-1-fg.png)
+          &.background
+            transform: translateZ(-100px) translateY(-50px) scale(1.1)
+            z-index: 2
+            background-image: url(../img/collage-home-2-1-bg.jpg)
+      .center-wrapper
+        .text-wrapper
+          margin: 0
+          padding: $paragraph-padding 0
+          .btn-more
+            display: none
+    .paragraphs-wrapper
+      padding: 2em 0
+      .paragraph
+        margin-bottom: 1.5em

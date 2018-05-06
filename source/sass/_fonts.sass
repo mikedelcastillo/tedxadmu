@@ -1,0 +1,17 @@
+@import defaults
+
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono')
+
+$font-path: '../fonts/'
+
+@mixin font-face($font-family, $font, $weight, $style)
+  @font-face
+    font-family: $font-family
+    src: url("#{$font-path + $font + "-" + $weight + ".ttf"}") format('truetype')
+    font-weight: $weight
+    font-style: $style
+
+$font-code: 'hn'
++font-face($font-sans-serif-base, $font-code, 300, 'normal')
++font-face($font-sans-serif-base, $font-code, 400, 'normal')
++font-face($font-sans-serif-base, $font-code, 700, 'normal')
