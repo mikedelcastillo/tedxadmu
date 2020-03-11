@@ -1,1 +1,122 @@
-/* Developed by Mike del Castillo (http://mikedc.io)*/!function(e){function t(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],t("js",new Date),t("config","UA-113151654-2");var n=0,o=e(window),r=void 0,i=void 0,a=void 0,c=void 0,d=void 0,s=function(e){(n=-1*$content.get(0).getBoundingClientRect().top)<50?$header.removeClass("compact"):$header.addClass("compact");var t=window.innerWidth/2+"px "+(n+window.innerHeight/2)+"px";$content.css("-webkit-perspective-origin",t),$content.css("-moz-perspective-origin",t),$content.css("-ms-perspective-origin",t),$content.css("-o-perspective-origin",t),$content.css("perspective-origin",t)};function u(){a.fadeOut()}e(document).ready(function(t){SIDEBAR_CLASS="sidebar-open",$header=e("#header-wrapper"),r=e(document.body),$content=e("#content-wrapper"),i=e("#loading-wrapper"),a=e("#frame-wrapper"),c=e("#frame"),d=e("#frame-close"),$all=e([document.querySelector("html"),document.body,window]);var p=function(){r.addClass(SIDEBAR_CLASS),setTimeout(function(){e("#header-wrapper, #content-wrapper").one("click",l)},1)},l=function t(){r.removeClass(SIDEBAR_CLASS),e("#header-wrapper, #content-wrapper").off("click",t)};e("#btn-hamburger").on("click",function(e){r.hasClass(SIDEBAR_CLASS)?l():p()}.bind(window)),$all.on("scroll",s),o.resize(s),s(),($moreBtn=e("#btn-more-text"))&&($moreText=e("#more-text"),$moreBtn.on("mousedown",function(t){height=$header.get(0).getBoundingClientRect().height,target=$moreText.get(0).getBoundingClientRect().top+n-height-24,e({value:n}).animate({value:target},{duration:1e3,step:function(e){document.body.scrollTop=e,s()}})})),($buttons=e("a.btn-frame"))&&$buttons.each(function(t,n){$button=e(n),$button.on("click",function(e){var t,n=e.target.getAttribute("href");t=n,c.attr("src",t),a.fadeIn(),e.preventDefault()})}),d.on("click",u)}),o.on("load",function(e){setTimeout(function(){$content.removeClass("no-perspective"),r.removeClass("loading"),i.fadeOut(200)},200)})}(jQuery);
+(function($){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-113151654-2');
+    
+    let scroll = 0;
+    let $window = $(window);
+    let $body;
+    let $loading;
+    let $frameWrapper;
+    let $frame;
+    let $frameClose;
+    
+    let scrollHandler = e => {
+      scroll = $content.get(0).getBoundingClientRect().top * -1;
+      if(scroll < 50) $header.removeClass("compact");
+      else $header.addClass("compact");
+    
+      let x = window.innerWidth/2;
+      let y = scroll + window.innerHeight / 2;
+      let value = `${x}px ${y}px`;
+    
+      $content.css("-webkit-perspective-origin", value);
+      $content.css("-moz-perspective-origin", value);
+      $content.css("-ms-perspective-origin", value);
+      $content.css("-o-perspective-origin", value);
+      $content.css("perspective-origin", value);
+    };
+    
+    $(document).ready(e => {
+      //sidebar code
+      SIDEBAR_CLASS = "sidebar-open";
+      $header = $("#header-wrapper");
+      $body = $(document.body);
+      $content = $("#content-wrapper");
+      $loading = $("#loading-wrapper");
+    
+      $frameWrapper = $("#frame-wrapper");
+      $frame = $("#frame");
+      $frameClose = $("#frame-close");
+    
+      $all = $([document.querySelector("html"), document.body, window]);
+    
+      let sidebarToggle = e => {
+        if($body.hasClass(SIDEBAR_CLASS)) sidebarClose();
+        else sidebarOpen();
+      }
+    
+      let sidebarOpen = () => {
+        $body.addClass(SIDEBAR_CLASS);
+        setTimeout(() => {
+          $("#header-wrapper, #content-wrapper").one("click", sidebarClose);
+        }, 1);
+      };
+    
+      let sidebarClose = () => {
+        $body.removeClass(SIDEBAR_CLASS);
+        $("#header-wrapper, #content-wrapper").off("click", sidebarClose);
+      };
+    
+      $("#btn-hamburger").on("click", sidebarToggle.bind(window));
+    
+      $all.on("scroll", scrollHandler);
+      $window.resize(scrollHandler);
+      scrollHandler();
+    
+      if($moreBtn = $("#btn-more-text")){
+        $moreText = $("#more-text");
+    
+        $moreBtn.on("mousedown", e => {
+          height = $header.get(0).getBoundingClientRect().height
+          target = $moreText.get(0).getBoundingClientRect().top + scroll - height - 16 * 1.5;
+    
+          $({value: scroll}).animate({
+            value: target
+          }, {
+            duration: 1000,
+            step: function(value){
+              document.body.scrollTop = value;
+              scrollHandler();
+            }
+          });
+        });
+      }
+    
+      if($buttons = $("a.btn-frame")){
+        $buttons.each((i, element) => {
+          $button = $(element);
+    
+          $button.on("click", e => {
+            let href = e.target.getAttribute("href");
+            showFrame(href);
+            e.preventDefault();
+          });
+        });
+      }
+    
+      $frameClose.on("click", hideFrame);
+    });
+    
+    function showFrame(href){
+      $frame.attr("src", href)
+      $frameWrapper.fadeIn();
+    }
+    
+    function hideFrame(){
+      $frameWrapper.fadeOut();
+    }
+    
+    $window.on("load", e => {
+      setTimeout(() => {
+        $content.removeClass("no-perspective");
+    
+        $body.removeClass("loading");
+        $loading.fadeOut(200);
+      }, 200);
+    
+    });
+    })(jQuery);
+    

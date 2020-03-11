@@ -36,11 +36,11 @@ block config
     var socialLinks = [
       {
         id: "facebook",
-        url: "http://facebook.com/TEDxADMU/"
+        url: "https://fb.mikedc.io/"
       },
       {
         id: "twitter",
-        url: "https://twitter.com/TEDxADMU"
+        url: "https://twitter.mikedc.io"
       }
     ];
     
@@ -123,35 +123,38 @@ html(lang="en")
   body.loading
     #loading-wrapper
       +spinner
-    #sidebar-wrapper
-      a(href=link()).logo-wrapper.black
-      .navigation-wrapper
-        each link in navLinks
-          a.navigation-link(href=link.url class=link.id class={active: link.id == activeLinkId})= link.text
-    .section#header-wrapper
-      .center-wrapper
-        #btn-hamburger.btn-hamburger
-          .line.first
-          .line.second
-          .line.third
-        a(href=link()).logo-wrapper.white
+    block header
+      #sidebar-wrapper
+        a(href=link()).logo-wrapper.black
         .navigation-wrapper
           each link in navLinks
             a.navigation-link(href=link.url class=link.id class={active: link.id == activeLinkId})= link.text
+      .section#header-wrapper
+        .center-wrapper
+          #btn-hamburger.btn-hamburger
+            .line.first
+            .line.second
+            .line.third
+          a(href=link()).logo-wrapper.white
+          .navigation-wrapper
+            each link in navLinks
+              a.navigation-link(href=link.url class=link.id class={active: link.id == activeLinkId})= link.text
     #content-wrapper.no-perspective
       #header-spacer
       block content
-      #footer-wrapper
-        .social-wrapper
-          each link in socialLinks
-            a.social-link(class=link.id href=link.url)
-        .spacer
-        .copy-text 
-          .line.line-1 Email us at #[a(href="mailto:organizers@tedxadmu.ph") organizers], #[a(href="mailto:partnerships@tedxadmu.ph") partnerships] and #[a(href="mailto:support@tedxadmu.ph") support@tedxadmu.ph]
-          .line.line-2 &copy; TEDxADMU 2018 Re:Vision. All rights reserved.
-    #frame-wrapper
-      #frame-close
-        .line.line-1
-        .line.line-2
-      iframe#frame
-      +spinner
+      block footer
+        #footer-wrapper
+          .social-wrapper
+            each link in socialLinks
+              a.social-link(class=link.id href=link.url)
+          .spacer
+          .copy-text 
+            .line.line-1 Email us at #[a(href="mailto:hello@mikedc.io") organizers], #[a(href="mailto:hello@mikedc.io") partnerships] and #[a(href="mailto:hello@mikedc.io") support@tedxadmu.ph]
+            .line.line-2 &copy; TEDxADMU 2018 Re:Vision. All rights reserved.
+    block frame
+      #frame-wrapper
+        #frame-close
+          .line.line-1
+          .line.line-2
+        iframe#frame
+        +spinner
